@@ -1,0 +1,14 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #1cc3cf; /* A light grey background */
+    color: #b45c05;
+}
+
+h1 {
+    color: #c70606;
+}
+
+p {
+    line-height: 1.6;
+}
