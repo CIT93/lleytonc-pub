@@ -6,8 +6,8 @@ const totalDisplayElement = document.getElementById("total-display");
 const addItem = document.getElementById("add-item-btn");
 
 //These variables will change as the user interacts with the page.
-let userName = 'Lleyton';
-let clickCount = 0;
+let totalCost = 0;
+const itemPrice = 15;
 
 // --- Part 2: Define and call the handleButtonClick Function---
 // A function is a block of code designed to perform a particular task.
@@ -15,14 +15,14 @@ let clickCount = 0;
 const handleButtonClick = function() {
     // clickCount = clickCount + 1;
     // Increase clickCount by 1 each time the button is clicked
-    clickCount += 1;
+    totalCost += 1;
 
     // Template strings (literal) to easily combine our variables and text into one message
-    let message = `Hello, ${userName}! You have clicked the button ${clickCount} time(s).`;
+    let message = `Hello, You have clicked the button ${totalCost} time(s).`;
 
     // This is basic decision-making in JavaScript!
     // Use a simple 'if' statement to make our page react differently based on clickCount.
-    if(clickCount >= 5) {
+    if(totalCost >= 5) {
         // We can even change the style of an HTML element directly with JavaScript!
         // Change text color
         message += ' WOW, you are a super clicker!';
@@ -34,7 +34,7 @@ const handleButtonClick = function() {
     // This is how JavaScript makes changes visible on the web page!
     totalDisplayElement.textContent = message;
 
-    console.log(`Button Clicked! Current click count: ${clickCount}`)     
+    console.log(`Button Clicked! Current click count: ${totalCost}`)     
 };
 
 
@@ -48,5 +48,5 @@ document.addEventListener('DOMContentLoaded', function(){
     // When 'updateButton' receives a 'click' event, the 'handleButtonClick' function will execute.
     addItem.addEventListener('click', handleButtonClick);
     
-    totalDisplayElement.textContent = `Welcome, ${userName}! Click the button below to start counting`
+    
 })
