@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function(){
     console.log('DOM fully loaded and parsed, App is ready for interaction')
     // Attach an event listener to our 'updateButton.
     // When 'updateButton' receives a 'click' event, the 'handleButtonClick' function will execute.
-    updateButton.addEventListener('click', handleButtonClick);
+    addItem.addEventListener('click', handleButtonClick);
     
     
 })
