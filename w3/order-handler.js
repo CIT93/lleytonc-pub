@@ -1,3 +1,5 @@
+
+
 const quantityInput = document.getElementById("qty");
 const giftWrapCheckbox = document.getElementById("gift-wrap");
 const sizeRadios = document.querySelectorAll('input[name=size]');
@@ -17,7 +19,7 @@ const getSelectedSize = function (radioButtons) {
 export const getOrderInputs = function() {
     console.log('Getting order inputs');
     return {
-        qty: parseInt(quantityInput.value) || 15,
+        qty: parseInt(quantityInput.value) || 10,
         size: getSelectedSize(sizeRadios),
         giftWrap: giftWrapCheckbox.checked,
     };  
