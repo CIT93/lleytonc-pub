@@ -1,5 +1,5 @@
 
-
+const orderForm = document.getElementById("order-form");
 const quantityInput = document.getElementById("qty");
 const giftWrapCheckbox = document.getElementById("gift-wrap");
 const sizeRadios = document.querySelectorAll('input[name=size]');
@@ -24,3 +24,11 @@ export const getOrderInputs = function() {
         giftWrap: giftWrapCheckbox.checked,
     };  
 };
+
+export const clearForm = function() {
+    orderForm.reset();
+    quantityInput.value = 1;
+    sizeRadios[0].checked = true;
+    giftWrapCheckbox.checked = false;
+    console.log('Form Cleared')
+}

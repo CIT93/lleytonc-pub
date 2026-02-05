@@ -29,12 +29,16 @@
         <br><br>
 
         <button type="submit">Place Order</button>
+        <button type="reset">Reset Form</button>
     </form>
 
     <hr>
     
-    <div id="order-summary">
-        <p>Order Details will appear here...</p>
-    </div>
+<div id="order-summary" style="display: none;">
+    <h2>Order Success!</h2>
+    <p><strong>Total Cost:</strong> $<span id="display-total"></span></p>
+    <p><strong>Details:</strong> <span id="display-qty"></span> <span id="display-size"></span> T-Shirt(s)</p>
+    <p><strong>Gift Wrap:</strong> <span id="display-gift"></span></p>
+</div>
 </body>
 </html>
