@@ -6,11 +6,12 @@ const sizeDisplay = orderContainer.querySelector('#display-size');
 const giftDisplay = orderContainer.querySelector('#display-gift');
 
 // Export a Function
-export const displayResults = function(order) {
+export const displayOrder = function(order) {
     totalDisplay.textContent = `${order.totalPrice}`;
-    qtyDisplay.textContent = `${order.qty} ${order.size}`;
-    giftDisplay.textContent = `${order.giftWrap}`;
+    qtyDisplay.textContent = `${order.qty}`;
+    sizeDisplay.textContent = `${order.size}`;
 
+    // Gift Warp
     if (order.giftWrap) {
         giftDisplay.textContent = 'Yes';
     }
@@ -21,6 +22,6 @@ export const displayResults = function(order) {
     orderContainer.style.display = 'block';
 };
 
-export const hideResults = function(){
+export const hideResults = function() {
     orderContainer.style.display = 'none';
 };
