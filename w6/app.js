@@ -4,6 +4,7 @@ import * as orderForm from "./order-handler.js";
 import * as priceCalculator from './price-calculator.js';
 import * as resultsDisplay from './results-display.js';
 import * as orderStorage from './order-storage.js';
+import * as orderList from './order-list.js';
 
 const orderFormElement = document.getElementById("order-form");
 //const orderSummary = document.getElementById("order-summary");
@@ -26,6 +27,8 @@ const handleOrderSubmit = function(event) {
    orderStorage.saveOrders(orders);
 
    resultsDisplay.displayOrder(newOrder);
+   
+   orderList.renderOrders(orders);
 };
 
 const handleClearForm = function() {
@@ -41,6 +44,7 @@ const init = function () {
     if(loadedOrders.length > 0) {
         orders.push(...loadedOrders);
         console.log('Orders loaded');
+        orderList.renderOrders(orders);
     }
     orderFormElement.addEventListener("submit", handleOrderSubmit);
     orderFormElement.addEventListener("reset", handleClearForm);
