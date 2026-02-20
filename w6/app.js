@@ -2,7 +2,6 @@ console.log('Hello from app.js! Your JavaScript is connected and running!');
 
 import * as orderForm from "./order-handler.js";
 import * as priceCalculator from './price-calculator.js';
-import * as resultsDisplay from './results-display.js';
 import * as orderStorage from './order-storage.js';
 import * as orderList from './order-list.js';
 
@@ -25,8 +24,6 @@ const handleOrderSubmit = function(event) {
    orders.push(newOrder);
 
    orderStorage.saveOrders(orders);
-
-   resultsDisplay.displayOrder(newOrder);
    
    orderList.renderOrders(orders);
 };
@@ -34,7 +31,6 @@ const handleOrderSubmit = function(event) {
 const handleClearForm = function() {
     orderForm.clearForm();
     console.log('reset button clicked');
-    resultsDisplay.hideResults();
 };
     
 
