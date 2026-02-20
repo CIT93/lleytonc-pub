@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="app.js"></script>
+    <title>Order History Table</title>
+</head>
+
+<body>
+    <h1>Custom T-Shirt Order</h1>
+
+    <form id="order-form">
+
+        <label>Quantity ($15 each):
+            <input type="number" id="qty" value="1" min="1">
+        </label>
+        <br><br>
+
+        <label>Size:</label>
+        <label><input type="radio" name="size" value="Small" checked> S</label>
+        <label><input type="radio" name="size" value="Medium"> M</label>
+        <label><input type="radio" name="size" value="Large"> L</label>
+        <br><br>
+
+        <label>
+            <input type="checkbox" id="gift-wrap"> Add Gift Wrap?
+        </label>
+        <br><br>
+
+        <button type="submit">Place Order</button>
+        <button type="reset">Reset Form</button>
+    </form>
+
+    <hr>
+
+    <div id="order-history-section">
+        <h2>Order History</h2>
+        <table id="order-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Qty</th>
+                    <th>Size</th>
+                    <th>Total</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="order-table-body">
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
