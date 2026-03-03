@@ -57,7 +57,7 @@ const resetAllUIStates = function() {
 // calculating footprint, creating a new entry, and saving it to local storage
 const handleFormSubmit = function (event) {
     event.preventDefault();
-    const formData = formHandler.getFormInputs(); 
+    const formData = formHandler.getFormInput(); 
     const calculatedResults = calculator.calculateFootprint(formData);
 
     const newEntry = {
