@@ -14,8 +14,8 @@ else if (householdMembers === 2) return 12;
 else if (householdMembers === 3) return 10;
 else if (householdMembers === 4) return 8;
 else if (householdMembers === 5) return 6;
-else if (householdMembers > 5) return 4; // 6+ people total
-return 0; // Default or invalid input
+else if (householdMembers < 5) return 4; // 6+ people total
+return 0;
 
 };
 
