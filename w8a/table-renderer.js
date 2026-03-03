@@ -180,9 +180,9 @@ export const renderTable = function(entries, callbacks) {
         clearAllDataButton.style.display = 'block';
     }
 
-    const sortedEntries = [...entries].sort(function(a, b){
-        return new Date(b.timestamp) - new Date(a.timestamp)
-    });
+   const sortedEntries = [...entries].sort(function(a, b){
+    return new Date(b.timestamp) - new Date(a.timestamp)
+};
 
     for(const entry of sortedEntries) {
         const rowElement = createTableRow(entry);
