@@ -10,38 +10,53 @@ const orderFormElement = document.getElementById("order-form");
 
 const orders = [];
 
-const handleOrderSubmit = function(event) {
+const handleOrderSubmit = function (event) {
     event.preventDefault();
-   const orderData = orderForm.getOrderInputs();
-   const priceData = priceCalculator.calculateTotal(orderData);
+    const orderData = orderForm.getOrderInputs();
+    const priceData = priceCalculator.calculateTotal(orderData);
 
-   const newOrder = {
-    id: Date.now().toString(),
-    ...orderData,
-    ...priceData,
-    timestamp: new Date().toISOString()
-   };
+    const newOrder = {
+        id: Date.now().toString(),
+        ...orderData,
+        ...priceData,
+        timestamp: new Date().toISOString()
+    };
 
-   orders.push(newOrder);
+    orders.push(newOrder);
 
-   orderStorage.saveOrders(orders);
-   
-   orderList.renderOrders(orders);
+    orderStorage.saveOrders(orders);
+
+    orderList.renderOrders(orders, {
+        onDelete: handleDelete,
+        onEdit: handleEdit
+    });
 };
 
-const handleClearForm = function() {
+const handleClearForm = function () {
     orderForm.clearForm();
     console.log('reset button clicked');
 };
-    
+
+const handleDelete = function (id) {
+    console.log("App.js: Requesting delete for order", id);
+};
+
+const handleEdit = function (id) {
+    console.log("App.js: Requesting edit for order", id);
+};
+
 
 const init = function () {
     console.log("App Initialized");
     const loadedOrders = orderStorage.loadOrders();
-    if(loadedOrders.length > 0) {
+    if (loadedOrders.length > 0) {
         orders.push(...loadedOrders);
         console.log('Orders loaded');
-        orderList.renderOrders(orders);
+
+        orderList.renderOrders(orders, {
+            onDelete: handleDelete,
+            onEdit: handleEdit
+        });
     }
     orderFormElement.addEventListener("submit", handleOrderSubmit);
     orderFormElement.addEventListener("reset", handleClearForm);

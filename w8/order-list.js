@@ -1,4 +1,5 @@
-
+// order-list.js top of file
+let moduleCallbacks = {};
 
 // Date
 const formatDateForDisplay = function (timestamp) {
@@ -38,12 +39,16 @@ orderTableBody.addEventListener('click', function(event) {
     // 2. Guard Clause: If they clicked a row (white space) but NOT a button, 
     // there will be no ID. So we stop the function immediately.
     if (!id) return;
-
-    // 3. Temporary Test: Log the ID to prove it works!
-    console.log("Clicked button with ID:", id); 
+ 
+    if(target.classList.contains('delete-btn')) {
+        moduleCallbacks.onDelete(id);
+    } else if(target.classList.contains("edit-btn")) {
+        moduleCallbacks.onEdit(id);
+    }
 });
 
-export const renderOrders = function (orders) {
+export const renderOrders = function (orders, callbacks) {
+    moduleCallbacks = callbacks;
     orderTableBody.innerHTML = '';
     console.log('inside orderList')
 
