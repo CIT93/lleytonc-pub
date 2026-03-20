@@ -12,17 +12,35 @@ const orders = [];
 
 const handleOrderSubmit = function (event) {
     event.preventDefault();
+
     const orderData = orderForm.getOrderInputs();
     const priceData = priceCalculator.calculateTotal(orderData);
 
-    const newOrder = {
-        id: Date.now().toString(),
-        ...orderData,
-        ...priceData,
-        timestamp: new Date().toISOString()
-    };
+    const orderId = document.getElementById('order-id').value;
 
-    orders.push(newOrder);
+    if (orderId) {
+        const indexToUpdate = orders.findIndex(function (order) {
+            return order.id === orderId;
+        });
+
+        if (indexToUpdate !== -1) {
+            orders[indexToUpdate] = {
+                ...orders[indexToUpdate],
+                ...orderData,
+                ...priceData
+            };
+        }
+
+    } else {
+        const newOrder = {
+            id: Date.now().toString(),
+            ...orderData,
+            ...priceData,
+            timestamp: new Date().toISOString()
+        };
+
+        orders.push(newOrder);
+    }
 
     orderStorage.saveOrders(orders);
 
@@ -30,6 +48,9 @@ const handleOrderSubmit = function (event) {
         onDelete: handleDelete,
         onEdit: handleEdit
     });
+
+    document.getElementById('order-id').value = '';
+    orderFormElement.reset();
 };
 
 const handleClearForm = function () {
@@ -40,11 +61,11 @@ const handleClearForm = function () {
 const handleDelete = function (id) {
     console.log("App.js: Requesting delete for order", id);
 
-    const indexToDelete = orders.findIndex(function(order){
+    const indexToDelete = orders.findIndex(function (order) {
         return order.id === id;
     });
 
-    if(indexToDelete !== -1) {
+    if (indexToDelete !== -1) {
         orders.splice(indexToDelete, 1);
     }
 
@@ -58,15 +79,15 @@ const handleDelete = function (id) {
 const handleEdit = function (id) {
     console.log("App.js: Requesting edit for order", id);
 
-    const orderToEdit = orders.find(function(order){
+    const orderToEdit = orders.find(function (order) {
         return order.id === id;
     });
 
-    if(orderToEdit) {
+    if (orderToEdit) {
         document.getElementById('qty').value = orderToEdit.qty
         const sizeRadios = document.querySelectorAll('input[name="size"]')
-        for(const radio of sizeRadios) {
-            if(radio.value === orderToEdit.size) {
+        for (const radio of sizeRadios) {
+            if (radio.value === orderToEdit.size) {
                 radio.checked = true;
             }
         }
